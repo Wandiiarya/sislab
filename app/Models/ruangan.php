@@ -10,5 +10,9 @@ class ruangan extends Model
     use HasFactory;
       protected $filLable = ['id', 'nama_ruangan','nama_pic','jml_komputer','jml_leptop'];
     public $timestamps = true;
+public function ruangan()
+{
+    return $this->belongsTo(Ruangan::class, 'id_ruangan');
+}
 
 }

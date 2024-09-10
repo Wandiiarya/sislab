@@ -26,7 +26,7 @@
                             @foreach ( $lp_ruangan as $data )
                              <tr>
                                 <th scope="row">{{$no++}}</th>
-                                <td>{{$data->penanggungjawab}}</td>
+                                <td>{{$data->id_peminjaman}}</td>
                                 <td>{{$data->keterangan}}</td>
                                <form action="{{route('lp_ruangan.destroy',$data->id)}}" method="POST">
                                 @csrf

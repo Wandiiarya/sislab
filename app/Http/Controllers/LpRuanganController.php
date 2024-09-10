@@ -57,8 +57,9 @@ class LpRuanganController extends Controller
      */
     public function show($id)
     {
+          
         $lp_ruangan = lp_ruangan::FindOrFail($id);
-        return view('lp_ruangans.show',compact('lp_ruangan'));
+        return view('lp_ruangans.show',compact('lp_ruangan',));
 
     }
 

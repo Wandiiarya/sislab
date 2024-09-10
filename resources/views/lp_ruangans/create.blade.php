@@ -9,16 +9,16 @@
 
                 <div class="card-body">
 
-                   <form action="{{route('pm_ruangan.store')}}" method="POST">
+                   <form action="{{route('lp_ruangan.store')}}" method="POST">
                      @csrf
 
 
                      <div class="mb-3">
                             <label class="form-label">penanggung jawab</label>
-                            <select class="form-control" name="id_prminjaman" value="masukan penanggung jawab">
+                            <select class="form-control" name="id_peminjaman" value="masukan penanggung jawab">
                                 <option value=""></option>
-                                 @foreach($ruangan as $ruangan)
-                                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}</option>
+                                 @foreach($pm_ruangan as $pm_ruangan)
+                                    <option value="{{ $pm_ruangan->id }}">{{ $pm_ruangan->penanggungjawab }}</option>
                                 @endforeach
                             </select>
                         </div>

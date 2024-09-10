@@ -10,4 +10,9 @@ class pm_ruangan extends Model
     use HasFactory;
     protected $filLable = ['id', 'penanggungjawab','instansi','jenis_kegiatan','id_ruangan','tanggal_peminjaman','documentasi','keterangan'];
     public $timestamps = true;
+    public function pm_Ruangan()
+{
+    return $this->hasMany(Pm_Ruangan::class, 'id_ruangan');
+}
+
 }

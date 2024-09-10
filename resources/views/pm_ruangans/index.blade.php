@@ -34,7 +34,7 @@
                                 <td>{{$data->penanggungjawab}}</td>
                                 <td>{{$data->instansi}}</td>
                                 <td>{{$data->Jenis_kegiatan}}</td>
-                                <td>{{$data->id_ruangan}}</td>
+                                <td>{{$data->id_ruangan}}</td> 
                                 <td>{{$data->tanggal_peminjaman}}</td>
                                 <td>{{$data->documentasi}}</td>
                                 <td>{{$data->keterangan}}</td>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ruangan;
+use App\Models\lp_ruangan;
+use App\Models\pm_ruangan;
 use Illuminate\Http\Request;
 
-class RuanganController extends Controller
+class LpRuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,8 @@ class RuanganController extends Controller
     }
     public function index()
     {
-        $ruangan=ruangan::all();
-        return view('ruangans.index',compact('ruangan'));
+        $lp_ruangan=lp_ruangan::all();
+        return view('lp_ruangans.index',compact('lp_ruangan'));
     }
 
     /**
@@ -29,7 +30,8 @@ class RuanganController extends Controller
      */
     public function create()
     {
-    return view('ruangans.create');
+        $pm_ruangan=pm_ruangan::all();
+    return view('lp_ruangans.create',compact('pm_ruangan'));
     }
 
     /**
@@ -40,13 +42,11 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        $ruangan=new ruangan;
-        $ruangan->nama_ruangan=$request->nama_ruangan;
-        $ruangan->nama_pic=$request->nama_pic;
-        $ruangan->jml_komputer=$request->jml_komputer;
-        $ruangan->jml_leptop=$request->jml_leptop;
-        $ruangan->save();
-        return redirect()->route('ruangan.index');
+        $lp_ruangan=new lp_ruangan;
+        $lp_ruangan->id_peminjaman=$request->id_peminjaman;
+        $lp_ruangan->keterangan=$request->keterangan;
+        $lp_ruangan->save();
+        return redirect()->route('lp_ruangan.index');
     }
 
     /**
@@ -57,8 +57,8 @@ class RuanganController extends Controller
      */
     public function show($id)
     {
-        $ruangan = ruangan::FindOrFail($id);
-        return view('ruangans.show',compact('ruangan'));
+        $lp_ruangan = lp_ruangan::FindOrFail($id);
+        return view('lp_ruangans.show',compact('lp_ruangan'));
 
     }
 
@@ -70,8 +70,9 @@ class RuanganController extends Controller
      */
     public function edit($id)
     {
-        $ruangan = ruangan::FindOrFail($id);
-        return view('ruangans.edit', compact('ruangan'));
+        $lp_ruangan = lp_ruangan::FindOrFail($id);
+        $pm_ruangan = pm_ruangan::all();
+        return view('lp_ruangans.edit', compact('lp_ruangan','pm_ruangan'));
 
     }
 
@@ -84,13 +85,11 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ruangan = ruangan::FindOrFail($id);
-        $ruangan->nama_ruangan=$request->nama_ruangan;
-        $ruangan->nama_pic=$request->nama_pic;
-        $ruangan->jml_komputer=$request->jml_komputer;
-        $ruangan->jml_leptop=$request->jml_leptop;
-        $ruangan->save();
-        return redirect()->route('ruangan.index');
+        $lp_ruangan = lp_ruangan::FindOrFail($id);
+        $lp_ruangan->id_peminjaman=$request->id_peminjaman;
+        $lp_ruangan->keterangan=$request->keterangan;
+        $lp_ruangan->save();
+        return redirect()->route('lp_ruangan.index');
 
 
     }
@@ -103,10 +102,10 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        $ruangan =  ruangan::FindOrFail($id);
+        $lp_ruangan =  lp_ruangan::FindOrFail($id);
 
-        $ruangan->delete();
-        return redirect()->route('ruangan.index');
+        $lp_ruangan->delete();
+        return redirect()->route('lp_ruangan.index');
 
     }
 }

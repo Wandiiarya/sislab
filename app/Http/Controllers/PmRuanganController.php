@@ -49,10 +49,16 @@ class PmRuanganController extends Controller
         $pm_ruangan->tanggal_peminjaman=$request->tanggal_peminjaman;
         $pm_ruangan->documentasi=$request->documentasi;
         $pm_ruangan->keterangan=$request->keterangan;
+         if ($request->hasFile('documentasi')) {
+    $img = $request->file('documentasi');
+    $name = rand(1000, 999) . $img->getClientOriginalName();
+    $img->move('images/pm_ruangan', $name);
+    $pm_ruangan->documentasi = $name;
+         }
         $pm_ruangan->save();
         return redirect()->route('pm_ruangan.index',);
     }
- 
+
     /**
      * Display the specified resource.
      *

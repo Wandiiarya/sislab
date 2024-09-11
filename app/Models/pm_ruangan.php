@@ -14,5 +14,10 @@ class pm_ruangan extends Model
 {
     return $this->hasMany(Pm_Ruangan::class, 'id_ruangan');
 }
+ public function deleteImage(){
+        if($this->documentasi&& file_exists(public_path('images/pm_Ruangan'.$this->documentasi))){
+            return unlink(public_path('images/pm_Ruangan'.$this->documentasi));
+        }
+    }
 
 }
